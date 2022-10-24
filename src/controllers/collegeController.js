@@ -14,6 +14,7 @@ const logoValidator = function (value) {
 }
 
 const createCollege = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
     try {
         const requestBody = req.body
         const requestQuery = req.query
@@ -93,6 +94,7 @@ const createCollege = async function (req, res) {
 }
 
 const functionupInterns = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
     try {
         let requestQuery = req.query
         let requestBody = req.body
@@ -104,10 +106,10 @@ const functionupInterns = async function (req, res) {
             return res.
                 status(400).
                 send({ status: false, msg: "please enter the collegeName" })
-        if (Object.keys(requestQuery).length > 1)
-            return res.
-                status(400).
-                send({ status: false, msg: "Please provide the college name only" })
+        // if (Object.keys(requestQuery).length > 1)
+        //     return res.
+        //         status(400).
+        //         send({ status: false, msg: "Please provide the college name only" })
         let data = await collegModel.findOne({ name: requestQuery.collegeName }).select({ name: 1, fullName: 1, logoLink: 1, _id: 1 })
         if (!data)
             return res.

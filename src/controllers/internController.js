@@ -15,6 +15,7 @@ let emailValidator = function (mail) {
 }
 
 const createIntern = async function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin','*')
     try {
         let requestBody = req.body
         let requestQuery = req.query
@@ -30,10 +31,10 @@ const createIntern = async function (req, res) {
                 status(400).
                 send({ status: false, msg: "invalid entry in queryParam" })
 
-        if (Object.keys(requestBody).length > 4)
-            return res.
-                status(400).
-                send({ status: false, msg: "invalid data entry inside request body" })
+        // if (Object.keys(requestBody).length > 4)
+        //     return res.
+        //         status(400).
+        //         send({ status: false, msg: "invalid data entry inside request body" })
 
 
         if (!name)
